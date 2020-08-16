@@ -34,6 +34,35 @@ public class MovieParam {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date endDate;
 
+    private String movieName;
+
+    private Integer showHome;
+    private Integer movieNum;
+
+
+    public Integer getMovieNum() {
+        return movieNum;
+    }
+
+    public void setMovieNum(Integer movieNum) {
+        this.movieNum = movieNum;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public Integer getShowHome() {
+        return showHome;
+    }
+
+    public void setShowHome(Integer showHome) {
+        this.showHome = showHome;
+    }
 
     public Integer getDraw() {
         return draw;

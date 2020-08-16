@@ -10,6 +10,7 @@ import com.fh.entity.po.Movie;
 import com.fh.entity.vo.MovieParam;
 import com.fh.service.MovieService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,6 +25,16 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public MovieParam queryMovie(MovieParam movieParam) {
         QueryWrapper<Movie> qw = new QueryWrapper<>();
+        qw.eq(!StringUtils.isEmpty(movieParam.getMovieName()),"movieName",movieParam.getMovieName())
+                .eq(!StringUtils.isEmpty(movieParam.getShowHome())&& !movieParam.getShowHome().equals("-1"),"showHome",movieParam.getShowHome());
+        if(movieParam.getMovieNum()==null ){// 没票
+
+        }else if( movieParam.getMovieNum()==1){
+            qw.eq("movieNum",0);
+        }else{//有票
+            qw.gt("movieNum",0);
+        }
+
         Page<Movie> page = new Page<>((movieParam.getStart()/movieParam.getLength())+1,movieParam.getLength());
         Page<Movie> moviePage = movieDao.selectPage(page, qw);
         MovieParam movieParams = new MovieParam(movieParam.getDraw(),moviePage.getTotal(),moviePage.getTotal(),moviePage.getRecords());
