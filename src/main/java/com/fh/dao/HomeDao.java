@@ -1,11 +1,9 @@
 package com.fh.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.fh.entity.po.Movie;
+import com.fh.entity.po.Home;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface MovieDao extends BaseMapper<Movie> {
-
-    void toUpdatemovieNum(Integer movieId);
+public interface HomeDao extends BaseMapper<Home> {
 }

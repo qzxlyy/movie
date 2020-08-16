@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.springframework.boot.convert.DurationFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 @TableName("t_movie")
@@ -13,6 +15,7 @@ public class Movie {
     @TableField(value = "movieName")
     private String   movieName;	//varchar2(120)	电影名称
     @TableField(value = "showTime")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date     showTime;	//date	放映时间
     @TableField(value = "movieNum")
     private Integer  movieNum;	//int	余票数量

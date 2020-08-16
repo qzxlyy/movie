@@ -9,5 +9,8 @@
      -->
     <!-- insert into 表名 （字段名,字段名） value （字段值，字段值）-->
 
+    <update id="toUpdatemovieNum" parameterType="java.lang.Integer">
+        update t_movie set movieNum=movieNum-1 where movieId=#{movieId}
+    </update>
 
 </mapper>
